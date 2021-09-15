@@ -4,6 +4,7 @@ node_modules
 
 # prettier
 .prettierrc.json
+.netlify/
 
 # local env files
 .env.local

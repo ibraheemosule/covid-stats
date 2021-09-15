@@ -18,7 +18,7 @@
       <h3 class="inline uppercase font-semibold text-green-600">covid stats</h3>
     </div>
     <ul class="nav pl-2">
-      <li class="nav-item mb-6">
+      <li @click="toggleNavOnMobile" class="nav-item mb-6">
         <router-link
           :to="{ name: 'country' }"
           class="
@@ -53,7 +53,7 @@
           v-if="allStates.length"
         >
           <template v-for="(state, index) in allStates">
-            <li :key="index" class="nav-item">
+            <li :key="index" @click="toggleNavOnMobile" class="nav-item">
               <router-link
                 :to="{
                   name: 'state',
@@ -89,6 +89,11 @@ export default {
     },
     isStatesAvailable() {
       return this.allStates?.length > 0
+    },
+  },
+  methods: {
+    toggleNavOnMobile() {
+      this.$emit("toggleNav")
     },
   },
 }

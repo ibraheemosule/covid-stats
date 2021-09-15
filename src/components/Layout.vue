@@ -17,8 +17,7 @@
     >
       <img v-if="!show" src="@/assets/images/menu.svg" alt="toggle" />
     </button>
-    <SideNav @toggleNav="toggle" ref="sidebar" />
-    <!-- <ChangePasswordModal v-if="$store.state.user.should_change_password" /> -->
+    <SideNav @toggleNav="toggle" ref="sidebar" class="hide" />
     <div
       v-on="show ? { click: toggle } : {}"
       :class="[
@@ -50,7 +49,6 @@ export default {
       const elStyle = this.$refs.sidebar.$el
       if (window.innerWidth < 640) {
         if (this.show) {
-          //   elStyle.display = "none"
           elStyle.classList.add("hide")
           elStyle.classList.remove("show")
         }
@@ -60,8 +58,6 @@ export default {
           elStyle.style.bottom = "0"
           elStyle.style.left = "0"
           elStyle.style.zIndex = "100"
-          // elStyle.height = "100vh"
-          // elStyle.display = "block"
           elStyle.classList.add("show")
           elStyle.classList.remove("hide")
         }
@@ -74,14 +70,13 @@ export default {
       const element = this.$refs?.sidebar?.$el?.classList
       if (window.innerWidth < 640) {
         if (element) {
-          element.add("duration-700")
-          element.add("transition-all")
-          element.add("hide")
+          element?.add("duration-700")
+          element?.add("transition-all")
         }
       } else {
-        element.remove("hide")
+        if (element) element?.remove("hide")
       }
-    }, 100)
+    }, 0)
   },
 }
 </script>
