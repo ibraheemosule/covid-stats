@@ -70,16 +70,18 @@ export default {
     },
   },
   mounted() {
-    const element = this.$refs?.sidebar?.$el?.classList
-    if (window.innerWidth < 640) {
-      if (element) {
-        element.add("duration-700")
-        element.add("transition-all")
-        element.add("hide")
+    setInterval(() => {
+      const element = this.$refs?.sidebar?.$el?.classList
+      if (window.innerWidth < 640) {
+        if (element) {
+          element.add("duration-700")
+          element.add("transition-all")
+          element.add("hide")
+        }
+      } else {
+        element.remove("hide")
       }
-    } else {
-      element.remove("hide")
-    }
+    }, 100)
   },
 }
 </script>
