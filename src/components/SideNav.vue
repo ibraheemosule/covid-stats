@@ -13,11 +13,15 @@
       z-10
     "
   >
-    <div class="flex items-center">
-      <img alt="" class="w-20 h-20 -ml-6 p-4" src="@/assets/images/covid.png" />
+    <div class="flex items-center mt-4 h-20">
+      <img
+        alt=""
+        class="w-20 h-auto -ml-6 p-4"
+        src="@/assets/images/covid.png"
+      />
       <h3 class="inline uppercase font-semibold text-green-600">covid stats</h3>
     </div>
-    <ul class="nav pl-2">
+    <ul class="nav pl-2 flex flex-grow flex-col h-5/6">
       <li @click="toggleNavOnMobile" class="nav-item mb-6">
         <router-link
           :to="{ name: 'country' }"
@@ -34,7 +38,7 @@
         </router-link>
       </li>
 
-      <li class="nav-item">
+      <li @click="toggleNavOnMobile" class="nav-item my-4">
         <span
           class="
             cursor-pointer
@@ -46,12 +50,9 @@
           "
           >STATES</span
         >
-
-        <ul
-          class="sub-nav collapse my-4"
-          ref="customers"
-          v-if="allStates.length"
-        >
+      </li>
+      <li class="nav-item overflow-y-scroll flex-grow flex flex-col">
+        <ul class="states flex-grow mb-4" v-if="allStates.length">
           <template v-for="(state, index) in allStates">
             <li :key="index" @click="toggleNavOnMobile" class="nav-item">
               <router-link

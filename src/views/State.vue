@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="bg-gray-100 px-2 flex-grow h-screen overflow-y-scroll">
-    <div class="my-9 pl-4">
-      <h1 class="text-2xl font-light mb-1">
+    <div class="my-9 mt-12 pl-4">
+      <h1 class="text-2xl font-light mb-1 mr-4">
         {{ $route.params.state.split(/(?=[A-Z])/).join(" ") }} State Data
         <hr class="line w-full" />
       </h1>
@@ -31,6 +31,11 @@
         "
       />
     </div>
+    <div v-else class="flex h-80 justify-center items-center">
+      <div class="w-12 h-12 mx-auto mt-20">
+        <img class="rotate" src="@/assets/images/covid.png" alt="" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -43,7 +48,6 @@ export default {
   data() {
     return {
       activeState: "",
-      loading: true,
       styles: {
         borderColor: "#74a57f",
         pointBorderColor: "#0E1428",

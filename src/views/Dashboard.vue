@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="bg-gray-100 px-2 flex-grow h-screen overflow-y-scroll">
-    <div class="my-9 pl-4">
-      <h1 class="text-2xl font-light mb-1">
+    <div class="my-9 mt-12 pl-4">
+      <h1 class="text-2xl font-light mb-1 mr-4">
         Overall Stats Data
         <hr class="line w-full" />
       </h1>
@@ -14,6 +14,7 @@
           :title="data.title"
           :value="data.value"
           :id="data.id"
+          :load="states.length < 1"
         />
       </template>
     </div>
@@ -26,6 +27,11 @@
         label="Overall States Chart"
       />
     </div>
+    <div v-else class="flex h-80 justify-center items-center">
+      <div class="w-12 h-12 mx-auto mt-20">
+        <img class="rotate" src="@/assets/images/covid.png" alt="" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -37,7 +43,6 @@ export default {
   },
   data() {
     return {
-      loading: true,
       styles: {
         borderColor: "#74a57f",
         pointBorderColor: "#0E1428",
@@ -103,6 +108,6 @@ export default {
 <style scoped>
 .line {
   border: 1px solid rgba(150, 150, 150, 0.062);
-  margin: 20px 0 20px 0;
+  margin: 20px 0px 20px 0;
 }
 </style>

@@ -5,13 +5,14 @@ Vue.mixin({
   data() {
     return {
       loading: true,
+      fetchData: true,
     }
   },
   computed: {
     ...mapState(["data"]),
     states() {
       const existingStates = []
-      const states = this.data.states.filter(state => {
+      const states = this.data.states.filter((state) => {
         if (existingStates.indexOf(state._id) > -1) {
           return false
         }
