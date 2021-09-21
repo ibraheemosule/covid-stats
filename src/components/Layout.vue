@@ -17,7 +17,11 @@
     >
       <img v-if="!show" src="@/assets/images/menu.svg" alt="toggle" />
     </button>
-    <SideNav @toggleNav="toggle" ref="sidebar" class="hide" />
+    <SideNav
+      @toggleNav="toggle"
+      ref="sidebar"
+      class="transition-all duration-700 md:transition-none hide"
+    />
     <div
       v-on="show ? { click: toggle } : {}"
       :class="[
@@ -42,9 +46,17 @@ export default {
   data() {
     return {
       show: false,
+      isSmallScreen: false,
     }
   },
   methods: {
+    handleResize() {
+      console.log(this.isSmallScreen)
+      if (window.innerWidth < 640) {
+        this.isSmallScreen = true
+      }
+      console.log(this.isSmallScreen)
+    },
     toggle() {
       const elStyle = this.$refs.sidebar.$el
       if (window.innerWidth < 640) {
@@ -65,26 +77,20 @@ export default {
       }
     },
   },
-  mounted() {
-    setInterval(() => {
-      const element = this.$refs?.sidebar?.$el?.classList
-      if (window.innerWidth < 640) {
-        if (element) {
-          element?.add("duration-700")
-          element?.add("transition-all")
-        }
-      } else {
-        if (element) element?.remove("hide")
-      }
-    }, 0)
+  beforeMount() {
+    window.addEventListener("load", this.handleResize)
+    window.addEventListener("resize", this.handleResize)
   },
 }
 </script>
+
 <style scoped>
-.hide {
-  transform: translate(-80vw);
-  position: absolute;
-  left: -80vw;
+@media (max-width: 640px) {
+  .hide {
+    transform: translate(-80vw);
+    position: absolute;
+    left: -80vw;
+  }
 }
 .show {
   transform: translate(0vw);

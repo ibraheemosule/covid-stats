@@ -25,11 +25,13 @@
         :options="chartOptions"
         :chartStyles="styles"
         label="Overall States Chart"
+        :width="1000"
       />
     </div>
     <div v-else class="flex h-80 justify-center items-center">
       <div class="w-12 h-12 mx-auto mt-20">
-        <img class="rotate" src="@/assets/images/covid.png" alt="" />
+        <img class="w-full rotate" src="@/assets/images/covid.png" alt="" />
+        <div>Loading...</div>
       </div>
     </div>
   </div>

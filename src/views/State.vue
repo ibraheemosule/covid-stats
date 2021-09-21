@@ -29,11 +29,13 @@
         :label="
           $route.params.state.split(/(?=[A-Z])/).join(' ') + ' State Data'
         "
+        :width="800"
       />
     </div>
     <div v-else class="flex h-80 justify-center items-center">
       <div class="w-12 h-12 mx-auto mt-20">
         <img class="rotate" src="@/assets/images/covid.png" alt="" />
+        <div>Loading...</div>
       </div>
     </div>
   </div>
