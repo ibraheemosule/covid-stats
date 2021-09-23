@@ -19,6 +19,7 @@
     </button>
     <SideNav
       @toggleNav="toggle"
+      :class="[show ? 'show' : 'hide']"
       ref="sidebar"
       class="transition-all duration-700 md:transition-none hide"
     />
@@ -46,40 +47,18 @@ export default {
   data() {
     return {
       show: false,
-      isSmallScreen: false,
     }
   },
   methods: {
-    handleResize() {
-      console.log(this.isSmallScreen)
-      if (window.innerWidth < 640) {
-        this.isSmallScreen = true
-      }
-      console.log(this.isSmallScreen)
-    },
     toggle() {
       const elStyle = this.$refs.sidebar.$el
       if (window.innerWidth < 640) {
-        if (this.show) {
-          elStyle.classList.add("hide")
-          elStyle.classList.remove("show")
-        }
-        if (!this.show) {
-          elStyle.style.position = "absolute"
-          elStyle.style.top = "0"
-          elStyle.style.bottom = "0"
-          elStyle.style.left = "0"
-          elStyle.style.zIndex = "100"
-          elStyle.classList.add("show")
-          elStyle.classList.remove("hide")
-        }
+        this.show
+          ? elStyle.classList.remove("show")
+          : elStyle.classList.remove("hide")
         this.show = !this.show
       }
     },
-  },
-  beforeMount() {
-    window.addEventListener("load", this.handleResize)
-    window.addEventListener("resize", this.handleResize)
   },
 }
 </script>
@@ -89,7 +68,8 @@ export default {
   .hide {
     transform: translate(-80vw);
     position: absolute;
-    left: -80vw;
+    left: 0;
+    top: 0;
   }
 }
 .show {
