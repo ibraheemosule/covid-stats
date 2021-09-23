@@ -21,7 +21,7 @@
               {{ title }}
             </h5>
             <span class="font-light text-md text-blueGray-700">
-              {{ value }} <Loader v-if="load" />
+              {{ value | splitNumber }} <Loader v-if="load" />
             </span>
           </div>
           <div class="relative w-auto pl-1 flex-initial">
@@ -54,5 +54,10 @@
 <script>
 export default {
   props: ["color", "value", "title", "id", "load"],
+  filters: {
+    splitNumber(val) {
+      return val.toLocaleString().split(",").join(", ")
+    },
+  },
 }
 </script>

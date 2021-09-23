@@ -80,34 +80,25 @@ export default {
         {
           title: "total cases",
           color: "bg-fadered",
-          value:
-            this.data?.totalActiveCases
-              .toLocaleString()
-              .split(",")
-              .join(", ") || 0,
+          value: this.data?.totalActiveCases,
           id: 0,
         },
         {
           title: "total confirmed",
           color: "bg-blue-100",
-          value:
-            this.data?.totalConfirmedCases
-              .toLocaleString()
-              .split(",")
-              .join(", ") || 0,
+          value: this.data?.totalConfirmedCases,
           id: 1,
         },
         {
           title: "total deaths",
           color: "bg-gray-300",
-          value: this.data?.death.toLocaleString().split(",").join(", ") || 0,
+          value: this.data?.death,
           id: 2,
         },
         {
           title: "total discharged",
           color: "bg-green-100",
-          value:
-            this.data?.discharged.toLocaleString().split(",").join(", ") || 0,
+          value: this.data?.discharged,
           id: 3,
         },
       ]
