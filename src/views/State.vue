@@ -124,7 +124,20 @@ export default {
   },
   methods: {
     changeState(value) {
-      this.activeState = value
+      const obj = {
+        ...value,
+        confirmedCases: value.confirmedCases
+          .toLocaleString()
+          .split(",")
+          .join(", "),
+        death: value.death.toLocaleString().split(",").join(", "),
+        discharged: value.discharged.toLocaleString().split(",").join(", "),
+        casesOnAdmission: value.casesOnAdmission
+          .toLocaleString()
+          .split(",")
+          .join(", "),
+      }
+      this.activeState = obj
     },
   },
 }
