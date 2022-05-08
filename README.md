@@ -1,3 +1,5 @@
+(https://ios-covidstats.netlify.app)
+
 # vuechart
 
 ## Project setup
